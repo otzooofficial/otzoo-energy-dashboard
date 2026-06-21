@@ -825,9 +825,9 @@
       <h1>OTZOO Energy</h1>
       <p>Station Owner Dashboard</p>
     </div>
-    <div class="auth-tabs">
-      <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Login</button>
-      <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Register</button>
+    <div style="display:flex;background:#F7F5FA;border-radius:10px;padding:4px;margin-bottom:24px;gap:4px">
+      <button id="tab-login" onclick="switchAuthTab('login')" style="flex:1;padding:10px;text-align:center;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;border:none;font-family:Inter,sans-serif;background:white;color:#6B2FA0;box-shadow:0 2px 8px rgba(0,0,0,0.1)">Login</button>
+      <button id="tab-register" onclick="switchAuthTab('register')" style="flex:1;padding:10px;text-align:center;border-radius:8px;cursor:pointer;font-size:14px;font-weight:500;border:none;font-family:Inter,sans-serif;background:transparent;color:#6B7280">Register</button>
     </div>
     <div class="auth-error" id="auth-error"></div>
     <div id="login-form">
