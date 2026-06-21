@@ -97,14 +97,14 @@
     color: var(--text-secondary);
     transition: all 0.2s;
     border: none;
-    background: transparent !important;
+    background: transparent;
   }
 
   .auth-tab.active {
-    background: white !important;
-    color: var(--purple) !important;
-    font-weight: 600 !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    background: white;
+    color: var(--purple);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 
   .form-group { margin-bottom: 16px; }
@@ -826,8 +826,8 @@
       <p>Station Owner Dashboard</p>
     </div>
     <div class="auth-tabs">
-      <button class="auth-tab active" onclick="switchAuthTab('login')">Login</button>
-      <button class="auth-tab" onclick="switchAuthTab('register')">Register</button>
+      <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Login</button>
+      <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Register</button>
     </div>
     <div class="auth-error" id="auth-error"></div>
     <div id="login-form">
@@ -1460,8 +1460,8 @@
 // ══════════════════════════════════════════════
 //  SUPABASE CONFIG — Replace with your keys
 // ══════════════════════════════════════════════
-const SUPABASE_URL = 'https://jyptvucebcaoaakthnqt.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp5cHR2dWNlYmNhb2Fha3RobnF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0OTk1NTksImV4cCI6MjA5MDA3NTU1OX0.cNXROvnj4fPErD06Rxi730j4nFb9eN3urEQTXUh41kE';
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 let currentUser = null;
@@ -1470,8 +1470,15 @@ let charts = {};
 
 // ── AUTH ──
 function switchAuthTab(tab) {
-  document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
-  document.querySelector(`[onclick="switchAuthTab('${tab}')"]`).classList.add('active');
+  var tl = document.getElementById('tab-login');
+  var tr = document.getElementById('tab-register');
+  if (tab === 'login') {
+    tl.style.cssText = 'background:white;color:#6B2FA0;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,0.1);flex:1;padding:8px;text-align:center;border-radius:8px;cursor:pointer;font-size:14px;border:none;font-family:Inter,sans-serif;';
+    tr.style.cssText = 'background:transparent;color:#6B7280;font-weight:500;box-shadow:none;flex:1;padding:8px;text-align:center;border-radius:8px;cursor:pointer;font-size:14px;border:none;font-family:Inter,sans-serif;';
+  } else {
+    tr.style.cssText = 'background:white;color:#6B2FA0;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,0.1);flex:1;padding:8px;text-align:center;border-radius:8px;cursor:pointer;font-size:14px;border:none;font-family:Inter,sans-serif;';
+    tl.style.cssText = 'background:transparent;color:#6B7280;font-weight:500;box-shadow:none;flex:1;padding:8px;text-align:center;border-radius:8px;cursor:pointer;font-size:14px;border:none;font-family:Inter,sans-serif;';
+  }
   document.getElementById('login-form').style.display = tab === 'login' ? 'block' : 'none';
   document.getElementById('register-form').style.display = tab === 'register' ? 'block' : 'none';
 }
