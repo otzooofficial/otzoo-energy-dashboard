@@ -1471,7 +1471,7 @@ let charts = {};
 // ── AUTH ──
 function switchAuthTab(tab) {
   document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
+  document.querySelector(`[onclick="switchAuthTab('${tab}')"]`).classList.add('active');
   document.getElementById('login-form').style.display = tab === 'login' ? 'block' : 'none';
   document.getElementById('register-form').style.display = tab === 'register' ? 'block' : 'none';
 }
